@@ -1,5 +1,5 @@
 module Parsso
 
-inclue("CoreDataStructure/CoreDataStructure.jl")
+include("CoreDataStructure/CoreDataStructure.jl")
 
 end # module
