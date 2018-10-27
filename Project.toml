@@ -1,0 +1,6 @@
+authors = ["Qi Zhang <singularitti@outlook.com>"]
+name = "Parsso"
+uuid = "4e0af45c-da0f-11e8-3fa7-97b4a94c71cb"
+version = "0.1.0"
+
+[deps]
