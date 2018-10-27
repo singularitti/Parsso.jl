@@ -21,4 +21,7 @@ struct Element
     pseudopotential::AbstractPath
 end
 
+Element(symbol::String, mass::Float64) = pseudopotential::AbstractPath -> Element(symbol, mass, pseudopotential)
+Element(symbol::String) = mass::Float64 -> Element(symbol, mass)
+
 end
