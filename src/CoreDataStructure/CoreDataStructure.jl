@@ -11,6 +11,6 @@ julia>
 """
 module CoreDataStructure
 
-include("Namelist.jl")
+include("Namelists.jl")
 
 end

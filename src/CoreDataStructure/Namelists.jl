@@ -1,5 +1,5 @@
 """
-# module Namelist
+# module Namelists
 
 
 
@@ -9,7 +9,7 @@
 julia>
 ```
 """
-module Namelist
+module Namelists
 
 struct NamelistVariable{T}
     name::String
@@ -24,5 +24,6 @@ struct Namelist
     name::String
     values::Dict
 end
+
 
 end
