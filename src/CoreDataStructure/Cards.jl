@@ -13,23 +13,15 @@ module Cards
 
 using Parsso.CoreDataStructure.Elements
 
-abstract type Card end
+abstract type AbstractCard end
 
-struct AtomicSpecies <: Card
-    values::Vector{Element}
+struct Card <: AbstractCard
+    name::String
+    values
 end
 
-struct CellParameters <: Card
-    option::String
-    values::Matrix{Float64}
-end
-
-struct AtomicPositions <: Card
-    option::String
-    values::Vector
-end
-
-struct KPoints <: Card
+struct OptionedCard <: AbstractCard
+    name::String
     option::String
     values
 end
