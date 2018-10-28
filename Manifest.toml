@@ -55,6 +55,12 @@ uuid = "d6f4376e-aef5-505a-96c1-9c027394607a"
 [[Mmap]]
 uuid = "a63ad114-7e13-5084-954f-fe012c677804"
 
+[[PeriodicTable]]
+deps = ["Compat", "Unitful"]
+git-tree-sha1 = "fe7c0cfc395c735db8df9ca59ae0c3c177cb05b0"
+uuid = "7b2266bf-644c-5ea3-82d8-af4bbd25a884"
+version = "0.1.2"
+
 [[Pkg]]
 deps = ["Dates", "LibGit2", "Markdown", "Printf", "REPL", "Random", "SHA", "UUIDs"]
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
@@ -114,3 +120,9 @@ uuid = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
 
 [[Unicode]]
 uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
+
+[[Unitful]]
+deps = ["LinearAlgebra", "Random", "Test", "Unicode"]
+git-tree-sha1 = "cef7da6d4e9735fae7c11cd28e77b76fd87db468"
+uuid = "1986cc42-f94f-5a68-af5c-568840ba703d"
+version = "0.12.0"
