@@ -13,6 +13,9 @@ module CoreDataStructure
 
 using Reexport
 
+include("Default.jl")
+@reexport using .Default
+
 include("Elements.jl")
 @reexport using .Elements
 
