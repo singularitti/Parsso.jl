@@ -23,10 +23,10 @@ struct AtomicSpecies
     pseudopotential::AbstractPath
 end
 
-Element(symbol, mass::Int, pseudopotential) = Element(symbol, convert(Float64, mass), pseudopotential)
-Element(symbol::String, mass::Float64) = pseudopotential::AbstractPath -> Element(symbol, mass, pseudopotential)
-Element(symbol::String, mass::Int) = Element(symbol, convert(Float64, mass))
-Element(symbol::String) = mass::Float64 -> Element(symbol, mass)
+AtomicSpecies(symbol, mass::Int, pseudopotential) = AtomicSpecies(symbol, convert(Float64, mass), pseudopotential)
+AtomicSpecies(symbol::String, mass::Float64) = pseudopotential::AbstractPath -> AtomicSpecies(symbol, mass, pseudopotential)
+AtomicSpecies(symbol::String, mass::Int) = AtomicSpecies(symbol, convert(Float64, mass))
+AtomicSpecies(symbol::String) = mass::Float64 -> AtomicSpecies(symbol, mass)
 
 const AtomicSpeciesFactory = (
     AtomicSpecies(element.symbol, element.atomic_mass.val) for element in PeriodicTable.elements
