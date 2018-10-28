@@ -11,10 +11,12 @@ julia>
 """
 module Reciprocal
 
+using StaticArrays: SVector
+
 export KPoint
 
 struct KPoint
-    coordinates::Vector{Float64}
+    coordinates::SVector{3, Float64}
     weight::Float64
 end
 
