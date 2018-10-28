@@ -25,4 +25,7 @@ include("Namelists.jl")
 include("Cards.jl")
 @reexport using .Cards
 
+include("PWscf.jl")
+@reexport using .PWscf
+
 end
