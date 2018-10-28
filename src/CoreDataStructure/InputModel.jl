@@ -11,6 +11,10 @@ julia>
 """
 module InputModel
 
+export NamelistsInput,
+    NamelistsCardsInput,
+    QE_PROGRAMS
+
 const QE_PROGRAMS = (
     "bands.x",
     "bgw2pw.x",
