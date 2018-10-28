@@ -11,6 +11,9 @@ julia>
 """
 module InputModel
 
+using Parsso.CoreDataStructure.Namelists
+using Parsso.CoreDataStructure.Cards
+
 export NamelistsInput,
     NamelistsCardsInput
 
