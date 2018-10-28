@@ -13,6 +13,9 @@ module Cards
 
 using Parsso.CoreDataStructure.Elements
 
+export Card,
+    OptionedCard
+
 abstract type AbstractCard end
 
 struct Card <: AbstractCard
