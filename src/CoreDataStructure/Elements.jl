@@ -12,12 +12,12 @@ julia>
 module Elements
 
 using FilePaths
-using JSON
+import PeriodicTable
 
-export Element,
-    PeriodicTable
+export AtomicSpecies,
+    AtomicSpeciesFactory
 
-struct Element
+struct AtomicSpecies
     symbol::String
     mass::Float64
     pseudopotential::AbstractPath
@@ -28,11 +28,8 @@ Element(symbol::String, mass::Float64) = pseudopotential::AbstractPath -> Elemen
 Element(symbol::String, mass::Int) = Element(symbol, convert(Float64, mass))
 Element(symbol::String) = mass::Float64 -> Element(symbol, mass)
 
-open("data/PeriodicTableJSON.json") do f
-    d = JSON.parse(f)["elements"]
-    global PeriodicTable = Dict(
-    number => Element(element["symbol"], element["atomic_mass"]) for (number, element) in enumerate(d)
+const AtomicSpeciesFactory = (
+    AtomicSpecies(element.symbol, element.atomic_mass.val) for element in PeriodicTable.elements
 )
-end
 
 end
