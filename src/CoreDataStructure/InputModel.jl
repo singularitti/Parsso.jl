@@ -35,10 +35,10 @@ const QE_PROGRAMS = (
 
 abstract type AbstractInput end
 
-struct NamelistsOnlyInput <: AbstractInput
+struct NamelistsInput <: AbstractInput
     program::String
     namelists::Vector{Namelist}
-    function NamelistsOnlyInput(program, namelists)
+    function NamelistsInput(program, namelists)
         program in QE_PROGRAMS || throw(DomainError("The program $program is not recognized!"))
         new(program, namelists)
     end
