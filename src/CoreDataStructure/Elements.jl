@@ -11,7 +11,6 @@ julia>
 """
 module Elements
 
-using FilePaths
 import PeriodicTable
 
 export AtomicSpecies,
@@ -20,10 +19,10 @@ export AtomicSpecies,
 struct AtomicSpecies
     symbol::String
     mass::Float64
-    pseudopotential::AbstractPath
+    pseudopotential::String
 end
 
-AtomicSpecies(symbol::String, mass::Float64) = pseudopotential::AbstractPath -> AtomicSpecies(symbol, mass, pseudopotential)
+AtomicSpecies(symbol::String, mass::Float64) = pseudopotential::String -> AtomicSpecies(symbol, mass, pseudopotential)
 AtomicSpecies(symbol::String) = mass::Float64 -> AtomicSpecies(symbol, mass)
 
 const AtomicSpeciesFactory = (
