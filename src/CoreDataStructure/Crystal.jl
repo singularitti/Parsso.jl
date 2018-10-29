@@ -16,7 +16,7 @@ using StaticArrays: SMatrix
 export CellParameters,
     CrystalFamily,
     Cubic, Hexagonal, Tetragonal, Orthorhombic, Monoclinic, Triclinic,
-    CenteringStyle,
+    CenteringType,
     Primitive, FaceCentered, BodyCentered, BaseCentered, RCentered,
     CUBIC_LATTICE_SYSTEM,
     HEXAGONAL_LATTICE_SYSTEM,
@@ -39,15 +39,15 @@ struct Orthorhombic <: CrystalFamily end
 struct Monoclinic <: CrystalFamily end
 struct Triclinic <: CrystalFamily end
 
-abstract type CenteringStyle end
+abstract type CenteringType end
 
-struct Primitive <: CenteringStyle end
-struct FaceCentered <: CenteringStyle end
-struct BodyCentered <: CenteringStyle end
-struct BaseCentered <: CenteringStyle end
-struct RCentered <: CenteringStyle end
+struct Primitive <: CenteringType end
+struct FaceCentered <: CenteringType end
+struct BodyCentered <: CenteringType end
+struct BaseCentered <: CenteringType end
+struct RCentered <: CenteringType end
 
-struct BravisLattice{A <: CrystalFamily, B <: CenteringStyle}
+struct BravisLattice{A <: CrystalFamily, B <: CenteringType}
     ibrav::Int
     celldm::Vector{Float64}
 end
