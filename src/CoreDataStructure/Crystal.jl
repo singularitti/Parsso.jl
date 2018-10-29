@@ -17,7 +17,7 @@ export CellParameters,
     CrystalFamily,
     Cubic, Hexagonal, Tetragonal, Orthorhombic, Monoclinic, Triclinic,
     CenteringStyle,
-    Primitive, FaceCentered, BodyCentered, BaseCentered
+    Primitive, FaceCentered, BodyCentered, BaseCentered, RCentered
 
 struct CellParameters
     coordinates::SMatrix{3, 3, Float64}
@@ -38,7 +38,7 @@ struct Primitive <: CenteringStyle end
 struct FaceCentered <: CenteringStyle end
 struct BodyCentered <: CenteringStyle end
 struct BaseCentered <: CenteringStyle end
-struct Rhombohedral <: CenteringStyle end
+struct RCentered <: CenteringStyle end
 
 struct BravisLattice{A <: CrystalFamily, B <: CenteringStyle}
     ibrav::Int
@@ -49,7 +49,7 @@ BravisLattice{A, B}(ibrav::Int) where {A, B} = celldm::Vector{Float64} -> Bravis
 
 const CUBIC_LATTICE_SYSTEM = (BravisLattice{Cubic, Primitive}(1), BravisLattice{Cubic, FaceCentered}(2), BravisLattice{Cubic, BodyCentered}(3))
 const HEXAGONAL_LATTICE_SYSTEM = (BravisLattice{Hexagonal, Primitive}(4),)
-const TRIGONAL_LATTICE_SYSTEM = (BravisLattice{Hexagonal, Rhombohedral}(5), BravisLattice{Hexagonal, Rhombohedral}(-5))
+const RHOMBOHEDRAL_LATTICE_SYSTEM = (BravisLattice{Hexagonal, RCentered}(5), BravisLattice{Hexagonal, RCentered}(-5))
 const TETRAGONAL_LATTICE_SYSTEM = (BravisLattice{Tetragonal, Primitive}(6), BravisLattice{Tetragonal, BodyCentered}(7))
 const ORTHORHOMBIC_LATTICE_SYSTEM = (BravisLattice{Orthorhombic, Primitive}(8), BravisLattice{Orthorhombic, BaseCentered}(9),
     BravisLattice{Orthorhombic, FaceCentered}(10), BravisLattice{Orthorhombic, BodyCentered}(11))
