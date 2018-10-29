@@ -11,7 +11,7 @@ julia>
 """
 module Crystal
 
-using StaticArrays: SMatrix
+using StaticArrays: SVector, SMatrix
 
 export CellParameters,
     CrystalFamily,
@@ -49,7 +49,7 @@ struct RCentered <: CenteringType end
 
 struct BravisLattice{A <: CrystalFamily, B <: CenteringType}
     ibrav::Int
-    celldm::Vector{Float64}
+    celldm::SVector{6, Float64}
 end
 
 BravisLattice{A, B}(ibrav::Int) where {A, B} = celldm::Vector{Float64} -> BravisLattice{A, B}(ibrav, celldm)
