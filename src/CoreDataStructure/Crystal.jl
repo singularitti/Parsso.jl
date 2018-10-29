@@ -52,7 +52,7 @@ struct BravisLattice{A <: CrystalFamily, B <: CenteringType}
     celldm::SVector{6, Float64}
 end
 
-BravisLattice{A, B}(ibrav::Int) where {A, B} = celldm::Vector{Float64} -> BravisLattice{A, B}(ibrav, celldm)
+BravisLattice{A, B}(ibrav::Int) where {A, B} = celldm::SVector{6, Float64} -> BravisLattice{A, B}(ibrav, celldm)
 
 const CUBIC_LATTICE_SYSTEM = (BravisLattice{Cubic, Primitive}(1), BravisLattice{Cubic, FaceCentered}(2), BravisLattice{Cubic, BodyCentered}(3))
 const HEXAGONAL_LATTICE_SYSTEM = (BravisLattice{Hexagonal, Primitive}(4),)
