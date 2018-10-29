@@ -17,7 +17,14 @@ export CellParameters,
     CrystalFamily,
     Cubic, Hexagonal, Tetragonal, Orthorhombic, Monoclinic, Triclinic,
     CenteringStyle,
-    Primitive, FaceCentered, BodyCentered, BaseCentered, RCentered
+    Primitive, FaceCentered, BodyCentered, BaseCentered, RCentered,
+    CUBIC_LATTICE_SYSTEM,
+    HEXAGONAL_LATTICE_SYSTEM,
+    RHOMBOHEDRAL_LATTICE_SYSTEM,
+    TETRAGONAL_LATTICE_SYSTEM,
+    ORTHORHOMBIC_LATTICE_SYSTEM,
+    MONOCLINIC_LATTICE_SYSTEM,
+    TRICLINIC_LATTICE_SYSTEM
 
 struct CellParameters
     coordinates::SMatrix{3, 3, Float64}
