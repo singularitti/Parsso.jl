@@ -11,6 +11,8 @@ julia>
 """
 module DumpInput
 
+using StaticArrays: SMatrix
+using JuliennedArrays
 using FilePaths
 
 export dumps,
@@ -32,6 +34,13 @@ dump(io::IO, input::AbstractInput) = write(io, dumps(input))
 
 dump(path::AbstractPath, input::AbstractInput) = open(path, "w") do f
     dump(f, input)
+end
+
+dumps(a::AtomicSpecies) = " $(a.symbol)  $(a.mass)  $(a.pseudopotential)"
+
+function dumps(c::CellParameters, delim::String=" ")
+    m = SMatrix{3, 4, String}(hcat((x -> string(x, delim)).(c.coordinates), ["\n", "\n", "\n"]))
+    join(map(Reduce(*), julienne(m, (*, :))))
 end
 
 end
