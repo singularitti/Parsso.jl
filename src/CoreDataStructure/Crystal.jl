@@ -47,21 +47,21 @@ struct BodyCentered <: CenteringType end
 struct BaseCentered <: CenteringType end
 struct RCentered <: CenteringType end
 
-struct BravisLattice{A <: CrystalFamily, B <: CenteringType}
+struct BravaisLattice{A <: CrystalFamily, B <: CenteringType}
     ibrav::Int
     celldm::SVector{6, Float64}
 end
 
-BravisLattice{A, B}(ibrav::Int) where {A, B} = celldm::AbstractArray{Float64, 1} -> BravisLattice{A, B}(ibrav, SVector{6, Float64}(celldm))
+BravaisLattice{A, B}(ibrav::Int) where {A, B} = celldm::AbstractArray{Float64, 1} -> BravaisLattice{A, B}(ibrav, SVector{6, Float64}(celldm))
 
-const CUBIC_LATTICE_SYSTEM = (BravisLattice{Cubic, Primitive}(1), BravisLattice{Cubic, FaceCentered}(2), BravisLattice{Cubic, BodyCentered}(3))
-const HEXAGONAL_LATTICE_SYSTEM = (BravisLattice{Hexagonal, Primitive}(4),)
-const RHOMBOHEDRAL_LATTICE_SYSTEM = (BravisLattice{Hexagonal, RCentered}(5), BravisLattice{Hexagonal, RCentered}(-5))
-const TETRAGONAL_LATTICE_SYSTEM = (BravisLattice{Tetragonal, Primitive}(6), BravisLattice{Tetragonal, BodyCentered}(7))
-const ORTHORHOMBIC_LATTICE_SYSTEM = (BravisLattice{Orthorhombic, Primitive}(8), BravisLattice{Orthorhombic, BaseCentered}(9),
-    BravisLattice{Orthorhombic, FaceCentered}(10), BravisLattice{Orthorhombic, BodyCentered}(11))
-const MONOCLINIC_LATTICE_SYSTEM = (BravisLattice{Monoclinic, Primitive}(12), BravisLattice{Monoclinic, Primitive}(-12),
-    BravisLattice{Monoclinic, BaseCentered}(13))
-const TRICLINIC_LATTICE_SYSTEM = (BravisLattice{Triclinic, Primitive}(14),)
+const CUBIC_LATTICE_SYSTEM = (BravaisLattice{Cubic, Primitive}(1), BravaisLattice{Cubic, FaceCentered}(2), BravaisLattice{Cubic, BodyCentered}(3))
+const HEXAGONAL_LATTICE_SYSTEM = (BravaisLattice{Hexagonal, Primitive}(4),)
+const RHOMBOHEDRAL_LATTICE_SYSTEM = (BravaisLattice{Hexagonal, RCentered}(5), BravaisLattice{Hexagonal, RCentered}(-5))
+const TETRAGONAL_LATTICE_SYSTEM = (BravaisLattice{Tetragonal, Primitive}(6), BravaisLattice{Tetragonal, BodyCentered}(7))
+const ORTHORHOMBIC_LATTICE_SYSTEM = (BravaisLattice{Orthorhombic, Primitive}(8), BravaisLattice{Orthorhombic, BaseCentered}(9),
+    BravaisLattice{Orthorhombic, FaceCentered}(10), BravaisLattice{Orthorhombic, BodyCentered}(11))
+const MONOCLINIC_LATTICE_SYSTEM = (BravaisLattice{Monoclinic, Primitive}(12), BravaisLattice{Monoclinic, Primitive}(-12),
+    BravaisLattice{Monoclinic, BaseCentered}(13))
+const TRICLINIC_LATTICE_SYSTEM = (BravaisLattice{Triclinic, Primitive}(14),)
 
 end
