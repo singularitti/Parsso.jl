@@ -35,6 +35,18 @@ version = "0.4.0"
 deps = ["LinearAlgebra", "Markdown"]
 uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 
+[[JuliennedArrays]]
+deps = ["Keys", "Pkg"]
+git-tree-sha1 = "b548d10a956c1008ae69af6780d62c86662cdd0a"
+uuid = "5cadff95-7770-533d-a838-a1bf817ee6e0"
+version = "0.1.0"
+
+[[Keys]]
+deps = ["MacroTools", "Pkg", "Test"]
+git-tree-sha1 = "913bf63ac3cfa299da7917846ca78c9e66bf323e"
+uuid = "25c06242-cc58-593c-a204-a17bebfb33b5"
+version = "0.5.0"
+
 [[LibGit2]]
 uuid = "76f85450-5226-5b5a-8eaa-529ad045b433"
 
@@ -47,6 +59,12 @@ uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[Logging]]
 uuid = "56ddb016-857b-54e1-b83d-db4d58db5568"
+
+[[MacroTools]]
+deps = ["Compat"]
+git-tree-sha1 = "c443e1c8d58a4e9f61b708ad0a88286c7042145b"
+uuid = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
+version = "0.4.4"
 
 [[Markdown]]
 deps = ["Base64"]
