@@ -17,7 +17,7 @@ export CellParameters,
     CrystalFamily,
     Cubic, Hexagonal, Tetragonal, Orthorhombic, Monoclinic, Triclinic,
     CenteringType,
-    Primitive, FaceCentered, BodyCentered, BaseCentered, RCentered,
+    Primitive, FaceCentered, BodyCentered, BaseCentered, RhombohedrallyCentered,
     CUBIC_LATTICE_SYSTEM,
     HEXAGONAL_LATTICE_SYSTEM,
     RHOMBOHEDRAL_LATTICE_SYSTEM,
@@ -45,7 +45,7 @@ struct Primitive <: CenteringType end
 struct FaceCentered <: CenteringType end
 struct BodyCentered <: CenteringType end
 struct BaseCentered <: CenteringType end
-struct RCentered <: CenteringType end
+struct RhombohedrallyCentered <: CenteringType end
 
 struct BravaisLattice{A <: CrystalFamily, B <: CenteringType}
     ibrav::Int
@@ -56,7 +56,7 @@ BravaisLattice{A, B}(ibrav::Int) where {A, B} = celldm::AbstractArray{Float64, 1
 
 const CUBIC_LATTICE_SYSTEM = (BravaisLattice{Cubic, Primitive}(1), BravaisLattice{Cubic, FaceCentered}(2), BravaisLattice{Cubic, BodyCentered}(3))
 const HEXAGONAL_LATTICE_SYSTEM = (BravaisLattice{Hexagonal, Primitive}(4),)
-const RHOMBOHEDRAL_LATTICE_SYSTEM = (BravaisLattice{Hexagonal, RCentered}(5), BravaisLattice{Hexagonal, RCentered}(-5))
+const RHOMBOHEDRAL_LATTICE_SYSTEM = (BravaisLattice{Hexagonal, RhombohedrallyCentered}(5), BravaisLattice{Hexagonal, RhombohedrallyCentered}(-5))
 const TETRAGONAL_LATTICE_SYSTEM = (BravaisLattice{Tetragonal, Primitive}(6), BravaisLattice{Tetragonal, BodyCentered}(7))
 const ORTHORHOMBIC_LATTICE_SYSTEM = (BravaisLattice{Orthorhombic, Primitive}(8), BravaisLattice{Orthorhombic, BaseCentered}(9),
     BravaisLattice{Orthorhombic, FaceCentered}(10), BravaisLattice{Orthorhombic, BodyCentered}(11))
