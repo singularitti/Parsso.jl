@@ -11,7 +11,7 @@ julia>
 """
 module Crystal
 
-using StaticArrays: SVector, SMatrix
+using StaticArrays: SVector, SMatrix, FieldVector
 
 export CellParameters,
     CrystalFamily,
@@ -47,12 +47,21 @@ struct BodyCentered <: CenteringType end
 struct BaseCentered <: CenteringType end
 struct RhombohedrallyCentered <: CenteringType end
 
-struct BravaisLattice{A <: CrystalFamily, B <: CenteringType}
-    ibrav::Int
-    celldm::SVector{6, Float64}
+struct CellDimension <: FieldVector{6, Float64}
+    a::Float64
+    b::Float64
+    c::Float64
+    cosγ::Float64
+    cosβ::Float64
+    cosα::Float64
 end
 
-BravaisLattice{A, B}(ibrav::Int) where {A, B} = celldm::AbstractArray{Float64, 1} -> BravaisLattice{A, B}(ibrav, SVector{6, Float64}(celldm))
+struct BravaisLattice{A <: CrystalFamily, B <: CenteringType}
+    ibrav::Int
+    celldm::CellDimension
+end
+
+BravaisLattice{A, B}(ibrav::Int) where {A, B} = celldm::AbstractArray{Float64, 1} -> BravaisLattice{A, B}(ibrav, CellDimension(celldm))
 
 const CUBIC_LATTICE_SYSTEM = (BravaisLattice{Cubic, Primitive}(1), BravaisLattice{Cubic, FaceCentered}(2), BravaisLattice{Cubic, BodyCentered}(3))
 const HEXAGONAL_LATTICE_SYSTEM = (BravaisLattice{Hexagonal, Primitive}(4),)
@@ -63,5 +72,12 @@ const ORTHORHOMBIC_LATTICE_SYSTEM = (BravaisLattice{Orthorhombic, Primitive}(8),
 const MONOCLINIC_LATTICE_SYSTEM = (BravaisLattice{Monoclinic, Primitive}(12), BravaisLattice{Monoclinic, Primitive}(-12),
     BravaisLattice{Monoclinic, BaseCentered}(13))
 const TRICLINIC_LATTICE_SYSTEM = (BravaisLattice{Triclinic, Primitive}(14),)
+
+function convert(b::BravaisLattice)::CellParameters
+    ibrav = b.ibrav
+
+end
+
+[celldm.a 0 0; celldm.b * celldm.cosγ celldm.b * celldm.sinγ 0; 0 0 celldm.c]
 
 end
