@@ -61,6 +61,6 @@ const CONTROL_NAMELIST_VARIABLES = [
     ("gate", Bool)
 ]
 
-const CONTROL_NAMELIST = Namelist("CONTROL", Dict(name => NamelistVariable{type}(name, "CONTROL") for (name, type) in CONTROL_NAMELIST_VARIABLES))
+const CONTROL_NAMELIST = Namelist("CONTROL", Dict(name => NamelistVariable{T}(name, "CONTROL") for (name, T) in CONTROL_NAMELIST_VARIABLES))
 
 end
